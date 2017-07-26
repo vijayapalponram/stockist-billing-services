@@ -1,0 +1,2 @@
+typedoc --out docs server
+
