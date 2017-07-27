@@ -218,5 +218,25 @@ paths:
                   type : string
           404:
             description: Service is not available
-            
+  /users/login:
+      post:
+        tags:
+          - Users
+        parameters:
+          - name: accessInfo
+            in: body
+            required: true
+            description: The id of the entity to retrieve
+            schema:
+              type : object
+              properties:
+                username :
+                  type : string
+                password :
+                  type : string
+        responses:
+          200:
+            description: Return true/false
+          404:
+            description: Users not available              
   
