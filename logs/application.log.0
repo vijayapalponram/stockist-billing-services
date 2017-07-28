@@ -1,0 +1,8 @@
+{"name":"myapp","hostname":"vijayapalponram","pid":496,"level":30,"msg":"up and running in development @: vijayapalponram on port: 3000","time":"2017-07-27T18:08:58.817Z","v":0}
+{"name":"myapp","hostname":"vijayapalponram","pid":496,"level":30,"uuid":"521b0fb8-0677-4a52-a727-bec04fa6f4ab","fullUrl":"http://localhost:3000/api/v1/shop/products","statusCode":200,"responseTime":"39.752","msg":"","time":"2017-07-27T18:09:26.418Z","v":0}
+{"name":"myapp","hostname":"vijayapalponram","pid":17644,"level":30,"msg":"up and running in development @: vijayapalponram on port: 3000","time":"2017-07-27T18:46:29.930Z","v":0}
+{"name":"myapp","hostname":"vijayapalponram","pid":12200,"level":30,"msg":"up and running in development @: vijayapalponram on port: 3000","time":"2017-07-27T18:47:20.825Z","v":0}
+{"name":"myapp","hostname":"vijayapalponram","pid":14792,"level":30,"msg":"up and running in development @: vijayapalponram on port: 3000","time":"2017-07-27T18:50:37.992Z","v":0}
+{"name":"myapp","hostname":"vijayapalponram","pid":15728,"level":30,"msg":"up and running in development @: vijayapalponram on port: 3000","time":"2017-07-27T18:54:24.157Z","v":0}
+{"name":"myapp","hostname":"vijayapalponram","pid":7588,"level":30,"msg":"up and running in development @: vijayapalponram on port: 3000","time":"2017-07-27T18:55:27.269Z","v":0}
+{"name":"myapp","hostname":"vijayapalponram","pid":6076,"level":30,"msg":"up and running in development @: vijayapalponram on port: 3000","time":"2017-07-27T19:07:11.019Z","v":0}

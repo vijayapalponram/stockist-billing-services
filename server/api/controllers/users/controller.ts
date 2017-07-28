@@ -14,12 +14,12 @@ export class Controller{
         
         const user = await User.findUserByCredentials(req.body.username, req.body.password);
         //const user = await User.find({}).exec();
-        let result : boolean;
+        let result : object;
         if(user != null) {
-            result = true;
+            result = {"found" : true};
         }
         else {
-            result = false;
+            result = {"found" : false};
         }
         res.json(result);
     }
