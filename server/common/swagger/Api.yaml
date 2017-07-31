@@ -238,5 +238,15 @@ paths:
           200:
             description: Return true/false
           404:
-            description: Users not available              
+            description: Users not available
+  /products:
+      get:
+        tags:
+          - Products        
+        responses:
+          200:
+            description: Return products
+          404:
+            description: Products not available    
+  
   

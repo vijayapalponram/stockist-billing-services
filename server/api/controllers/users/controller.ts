@@ -19,7 +19,7 @@ export class Controller{
             
             if(user != null) {            
                 const token = sign(user, process.env.SECRET_KEY, {expiresIn: process.env.TOKEN_EXPIRY});
-                result = {"found" : true, "token":token, "secretkey":process.env.TOKEN_EXPIRY};
+                result = {"found" : true, "token":token};
             }
             else {
                 result = {"found" : false};
