@@ -2,8 +2,10 @@ import { mongoose } from "../../common/database";
 import { Schema, Model, Document } from "mongoose";
 
 export interface IUser extends Document {
-    username: string;
-    password: string;    
+    name: string;
+    firstName: string;
+    lastName : string;
+    roleCode:Number    
 }
 
 export interface IUserModel extends Model<IUser> {
@@ -11,19 +13,21 @@ export interface IUserModel extends Model<IUser> {
 }
 
 const schema = new Schema({
-    username : {
-        type : String
-    },
-    password : {
-        type : String
-    }
+    name : String,
+    firstName : String,   
+    lastName : String,  
+    username :String,
+    password : String,
+    roleCode : Number,
+    loginEnable : Boolean,
+    passwordLock :Boolean
 });
 
 
-schema.static("findUserByCredentials", async(username:string, password:string) => {
+schema.static("findUserByCredentials", (username:string, password:string) : Promise<IUser> => {
     
     return User
-        .findOne({"username":username, "password":password})
+        .findOne({"username":username, "password":password}, 'name firstName lastName')
         .lean()
         .exec();
 

@@ -1,7 +1,7 @@
 import mongoose = require("mongoose");
 
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://127.0.0.1:27017/stockist-billing-db");
+mongoose.connect(process.env.CONNECTION_URL);
 
 export { mongoose };
 

@@ -8,10 +8,11 @@ import * as cookieParser from 'cookie-parser';
 import * as helmet from 'helmet';
 import swaggerify from './swagger';
 import { LogManager } from './log-manager';
-
+import * as jwt from 'jsonwebtoken';
 import * as bunyan from 'bunyan';
 
 import * as logger from 'express-bunyan-logger';
+import usersRouter from '../../server/api/controllers/users/router';
 
 const bunyanOpts = {
     name: 'myapp',
@@ -38,7 +39,6 @@ const responseTime = require('response-time');
 
 // tslint:disable-next-line:typedef
 const app = express();
-
 
 // Init
 const Prometheus = require('prom-client');
@@ -77,10 +77,41 @@ export default class ExpressServer {
       res.set('Content-Type', Prometheus.register.contentType);
       res.end(Prometheus.register.metrics());
     });
+
+    app.use('/api/v1/users', usersRouter);
+
+    /*Authenticating the API requests */
+    var apiRoutes = express.Router();
+    apiRoutes.use(function(req,res,next){
+      var token = req.body.token || req.query.token || req.headers['x-access-token'];
+      if (token) {
+        // verifies secret and checks exp
+        jwt.verify(token, process.env.SECRET_KEY, function(err, decoded) {      
+          if (err) {
+            return res.json({ success: false, message: 'Failed to authenticate token.',
+          token : token, key:process.env.SECRET_KEY,
+          ERR:err
+         });    
+          } else {
+            // if everything is good, save to request for use in other routes
+            //req.decoded = decoded;    
+            next();
+          }
+        });
+      }
+      else {
+        return res.status(403).send({ 
+          success: false, 
+          message: 'No token provided.' 
+        });
+      }
+    });
+    app.use('/api/v1', apiRoutes);
   }
 
   public router(routes: (app: Application) => void): ExpressServer {
     swaggerify(app, routes);
+    
     return this;
   }
 
