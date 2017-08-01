@@ -247,6 +247,38 @@ paths:
           200:
             description: Return products
           404:
-            description: Products not available    
-  
-  
+            description: Products not available
+      post:
+        tags:
+          - Products
+        parameters:
+          - name: product
+            in: body
+            required: true
+            description: The id of the entity to retrieve
+            schema:
+              type : object
+              properties:
+                productName :
+                  type : string
+                pack :
+                  type : string
+                mrp :
+                  type : integer
+                rate :
+                  type : integer
+                cost :
+                  type : integer
+                vat :
+                  type : integer
+                mfgr :
+                  type : string
+                minStock :
+                  type : integer                                                                                                
+                hsnCode :
+                  type : string                  
+        responses:
+          200:
+            description: Return products
+          404:
+            description: Products not available

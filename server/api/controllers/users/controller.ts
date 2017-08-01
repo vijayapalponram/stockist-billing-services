@@ -12,7 +12,10 @@ const LOG = LogManager.getInstance().getLogger();
 
 export class Controller{
     public async login(req:Request, res:Response){
-        
+        let errMessage = "";
+        if(req.body.username==null || req.body.username=="" ){
+            errMessage = "Username/Password should not be empty";
+        }
         const user = await User.findUserByCredentials(req.body.username, req.body.password);
         //User.findUserByCredentials(req.body.username, req.body.password).then((user:IUser)=>{
             let result : object;
